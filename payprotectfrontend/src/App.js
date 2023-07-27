@@ -1,12 +1,13 @@
 import './App.css';
+import { Routes, Route } from "react-router-dom";
+import Signup from './Components/Parent/SignUp/Signup';
 
 function App() {
-  return (
-    <div className="App">
-        pay-protect
-        
-    </div>
-  );
+    return (
+        <Routes>
+            <Route path="/" element={<Signup />} />
+        </Routes>
+    );
 }
 
 export default App;
