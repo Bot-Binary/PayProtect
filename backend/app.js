@@ -14,6 +14,17 @@ app.use(cors({
 }))
 
 
+// DB connection
+require("./db/connect");
+
+
+// DB Models
+const parent = require("./models/registration/parent");
+const wallet = require("./models/wallet/wallet");
+
+
+
+
 app.post("/home",(req,res)=>{
     console.log("HHHHHHHHHHHH");
 })
