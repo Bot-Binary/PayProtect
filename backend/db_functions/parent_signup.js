@@ -34,8 +34,9 @@ const parent_signup = async (req, res) => {
 
     const save = await new_parent.save()
         .then(async () => {
-            // const x = await parent.find({ phone: data.phone });
-            console.log("SAVED");
+            const x = await parent.find({ phone: data.phone });
+            // console.log("SAVED");
+            res.send(x);
         }).catch((e) => {
             console.log("THIS IS ERROR FROM parent_signup.js file");
             console.log(e);
