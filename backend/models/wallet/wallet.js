@@ -13,7 +13,7 @@ const schema = new mongoose.Schema({
         default:0,
     },
     mpin:{
-        type:string,
+        type:String,
         required:true
     }
 
