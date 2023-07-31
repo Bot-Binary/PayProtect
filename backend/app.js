@@ -8,6 +8,9 @@ const cors = require("cors");
 // ENV
 require("dotenv").config();
 
+// DOTENV set krvani baki 6.......OTP verification authorization key mate
+
+
 
 
 
@@ -15,7 +18,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors({
-    origin: "http://127.0.0.1:3000"
+    origin:"https://jaysanghani08-redesigned-space-halibut-pq9pqw9v9q52xvq-3000.preview.app.github.dev",
     // credentials:true
 }))
 
@@ -34,7 +37,7 @@ const wallet = require("./models/wallet/wallet");
 
 const parent_signup = require("./db_functions/parent_signup");
 
-const otp = require("./otp-mailer/otp");
+const otp_function = require("./otp-mailer/otp");
 
 
 
@@ -42,7 +45,10 @@ const otp = require("./otp-mailer/otp");
 
 app.post("/parent/signup",parent_signup);
 
-app.post("/parent/otp",otp);
+app.post("/parent/otp",otp_function);
+
+app.post("/parent/otp_verification",otp_verification_function);
+
 
 app.post("/home",(req,res)=>{
     console.log("HHHHHHHHHHHH");
