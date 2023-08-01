@@ -39,6 +39,11 @@ const parent_signup = require("./db_functions/parent_signup");
 
 const otp_function = require("./otp-mailer/otp");
 
+const otp_verification_function = require("./db_functions/otp_verification");
+
+
+
+
 
 
 

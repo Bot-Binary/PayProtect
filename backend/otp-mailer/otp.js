@@ -44,15 +44,26 @@ const otp_function = (async (req,res)=>{
     try {
         // const response = await axios.request(options);
         // return response;
+
+        const already = await otp.findOne({phone:phone});
+        console.log(already);
+        if(already){
+            const dlt = await otp.deleteOne({phone:phone});
+            console.log(dlt);
+        }  
+
+        console.log(otp_number);
+
+
         const otp_obj = new otp({
             otp : otp_number,
             phone : phone,
         })
         const save = await otp_obj.save();
-        // console.log(save);
-        const res_code = response.data.http_code;
+        console.log(save);
+        // const res_code = response.data.http_code;
 
-        res.status(res_status).send();
+        // res.status(res_status).send();
 
         // console.log(response);
         console.log("YYY");
