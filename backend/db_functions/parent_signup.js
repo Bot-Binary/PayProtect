@@ -62,6 +62,7 @@ const parent_signup = async (req, res) => {
             })
 
     } catch (error) {
+        console.log("THIS IS ERROR FROM parent_signup.js");
         console.log(error);
     }
 
