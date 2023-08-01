@@ -35,34 +35,40 @@ const parent_signup = async (req, res) => {
         payid: `${data.username}@PayProtect`,
 
     })
-    
 
-    const save = await new_parent.save()
-        .then(async () => {
-            const x = await parent.find({ phone: data.phone });
-            console.log("SAVED");
-            res.status(200).send(x);
-        }).catch((e) => {
-            console.log("THIS IS ERROR FROM parent_signup.js file");
-            console.log(e);
-            const err = e.keyPattern;
-            // console.log(err);
-            if(err.hasOwnProperty('email')==true && err.email==1){
-                res.status(410).send();
-            }
-            else if(err.hasOwnProperty('phone') ==true && err.phone==1){
-                res.status(411).send();
-            }
-            else if(err.hasOwnProperty('username')==true  && err.username==1){
-                res.status(412).send();
-            }
+    try {
+        const save = await new_parent.save()
+            .then(async () => {
+                const x = await parent.find({ phone: data.phone });
+                console.log("SAVED");
+                res.status(200).send(x);
+            }).catch((e) => {
+                console.log("THIS IS ERROR FROM parent_signup.js file");
+                console.log(e);
+                const err = e.keyPattern;
+                // console.log(err);
+                if (err.hasOwnProperty('email') == true && err.email == 1) {
+                    res.status(410).send();
+                }
+                else if (err.hasOwnProperty('phone') == true && err.phone == 1) {
+                    res.status(411).send();
+                }
+                else if (err.hasOwnProperty('username') == true && err.username == 1) {
+                    res.status(412).send();
+                }
 
-            res.status(413).send("Bad Request");
+                res.status(413).send("Bad Request");
 
-    })
+            })
 
-    console.log()
-    
+    } catch (error) {
+        console.log(error);
+    }
+
+
+
+    // console.log()
+
 }
 // )
 
