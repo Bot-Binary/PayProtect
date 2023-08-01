@@ -30,6 +30,7 @@ require("./db/connect");
 // DB Models
 const parent = require("./models/registration/parents");
 const wallet = require("./models/wallet/wallet");
+const child = require("./models/registration/child");
 
 
 
@@ -41,6 +42,8 @@ const otp_function = require("./otp-mailer/otp");
 
 const otp_verification_function = require("./db_functions/otp_verification");
 
+const child_signup = require("./db_functions/child_signup");
+
 
 
 
@@ -50,9 +53,11 @@ const otp_verification_function = require("./db_functions/otp_verification");
 
 app.post("/parent/signup",parent_signup);
 
-app.post("/parent/otp",otp_function);
+app.post("/otp",otp_function);
 
-app.post("/parent/otp_verification",otp_verification_function);
+app.post("/otp_verification",otp_verification_function);
+
+app.post("/child/signup",child_signup);
 
 
 app.post("/home",(req,res)=>{
