@@ -56,9 +56,9 @@ const parent_signup = async (req, res) => {
             else if(err.hasOwnProperty('username')==true  && err.username==1){
                 res.status(412).send();
             }
-
-            res.status(413).send("Bad Request");
-
+            else{
+                res.status(413).send("Bad Request");
+            }
     })
 
     console.log()

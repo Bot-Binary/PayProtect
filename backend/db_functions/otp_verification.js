@@ -10,8 +10,6 @@ const otp_verification = (async(req,res)=>{
     const phone = `+91${req.body.phone}`;
     const otp_number = req.body.otp;
 
-    
-
     const data = await otp.findOne({phone:phone});
     const hashed_otp = data.otp;
 

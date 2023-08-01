@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import './signup.css'
-// import { useNavigate } from 'react-router-dom';
 import { POSTsignup } from '../../../utilities/axios/Paths';
+import { checkIfAllValuesAreEmpty } from '../../../utilities/axios/extrafns';
 
-const Signup = () => {
+const Signup = (setOtpSent, setPhone) => {
 
     // const navigate = useNavigate();
 
@@ -18,11 +18,26 @@ const Signup = () => {
             username: '',
             password: '',
             cpassword: ''
+
         }
     )
 
-    console.log(formData)
-    
+    const [errors, setErrors] = useState(
+        {
+            fname: '',
+            mname: '',
+            lname: '',
+            phone: '',
+            email: '',
+            dob: '',
+            username: '',
+            password: '',
+            cpassword: '',
+        }
+    )
+
+    // console.log(formData)
+
     function handleChange(event) {
         const { name, value } = event.target
         setFormData(prevFormData => {
@@ -31,22 +46,26 @@ const Signup = () => {
                 [name]: value
             }
         })
-
     }
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const Loggedin = await POSTsignup(formData);
 
-        console.log(Loggedin)
+        const tmp = await POSTsignup(formData);
+        // console.log(tmp)
+
+        setErrors(tmp);
+        const isempty = checkIfAllValuesAreEmpty(tmp)
+        if (isempty === true) {
+            setPhone(FormData.phone)
+            setOtpSent(true)
+        }
     }
 
     return (
         <div className="signup">
-
-
             <div className="form">
-                <h1>Sign up</h1>
+                <h1>Join Us</h1>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <input
@@ -56,7 +75,8 @@ const Signup = () => {
                             onChange={handleChange}
                             placeholder='First Name'
                         />
-                        <br></br>
+                        {errors.fname && <p className="errors">{errors.fname}</p>}
+                        {/* <br></br> */}
                     </div>
                     <div>
                         <input
@@ -66,8 +86,8 @@ const Signup = () => {
                             name='mname'
                             placeholder='Middle Name'
                         />
-
-                        <br></br>
+                        {errors.mname && <p className="errors">{errors.mname}</p>}
+                        {/* <br></br> */}
                     </div>
                     <div>
                         <input
@@ -77,7 +97,7 @@ const Signup = () => {
                             name='lname'
                             placeholder='Last Name'
                         />
-                        <br></br>
+                        {errors.lname && <p className="errors">{errors.lname}</p>}
                     </div>
 
                     <div>
@@ -88,7 +108,7 @@ const Signup = () => {
                             name='phone'
                             placeholder='Mobile'
                         />
-                        <br></br>
+                        {errors.phone && <p className="errors">{errors.phone}</p>}
                     </div>
 
                     <div>
@@ -99,7 +119,7 @@ const Signup = () => {
                             name='email'
                             placeholder='Email'
                         />
-                        <br></br>
+                        {errors.email && <p className="errors">{errors.email}</p>}
 
                     </div>
 
@@ -114,7 +134,7 @@ const Signup = () => {
                             name='dob'
                             placeholder='Date Of Birth'
                         />
-                        <br></br>
+                        {errors.dob && <p className="errors">{errors.dob}</p>}
                     </div>
 
                     <div>
@@ -125,7 +145,7 @@ const Signup = () => {
                             name='username'
                             placeholder='Select Username'
                         />
-                        <br></br>
+                        {errors.username && <p className="errors">{errors.username}</p>}
                     </div>
 
                     <div>
@@ -136,7 +156,7 @@ const Signup = () => {
                             onChange={handleChange}
                             placeholder='Password'
                         />
-                        <br></br>
+                        {errors.password && <p className="errors">{errors.password}</p>}
                     </div>
 
                     <div>
@@ -146,9 +166,8 @@ const Signup = () => {
                             name='cpassword'
                             onChange={handleChange}
                             placeholder='Confirm Password'
-
                         />
-                        <br></br>
+                        {errors.cpassword && <p className="errors">{errors.cpassword}</p>}
                     </div>
 
                     <button type="submit">Submit</button>
@@ -156,7 +175,6 @@ const Signup = () => {
             </div>
         </div>
     )
-
 }
 
 export default Signup

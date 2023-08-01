@@ -1,51 +1,43 @@
-import React, { useState } from 'react'
-import './signup.css'
-// import { useNavigate } from 'react-router-dom';
-import { POSTsignup } from '../../../utilities/axios/Paths';
+// src/OtpVerification.js
+import React, { useState } from 'react';
+import { POSTotp } from '../../../utilities/axios/Paths';
 
-const Signup = () => {
+const OtpVerification = (phone) => {
+    const [otp, setOtp] = useState('');
 
-    const [currOTP, setCurrOTP] = useState();
+    const handleChange = (e) => {
+        setOtp(e.target.value);
+    };
 
-    console.log(currOTP)
+    const [errors, setErrors] = useState('')
 
-    function handleChange(event) {
-        setCurrOTP(event.target.value)
-    }
+    const handleVerify = async (e) => {
 
-    async function handleSubmit(event) {
-        event.preventDefault();
-        const Loggedin = await POSTsignup(currOTP);
+        if(otp.length !== 6){
+            setErrors('OTP must be of 6 charactors')
+        }
 
-        console.log(Loggedin)
-    }
+        const data = {
+            phone : phone,
+            otp : otp
+        }
+
+        const tmp = await POSTotp(data);
+        console.log(tmp)
+
+        setErrors(tmp);
+    };
 
     return (
-        <div className="signup">
+        <form onSubmit={handleVerify}>
+            <label>
+                Enter OTP:
+                <input type="text" name="otp" value={otp} onChange={handleChange} />
+                {errors && <p className="errors">{errors}</p>}
+            </label>
+            <button type="submit">Verify OTP</button>
+        </form>
+    );
+};
 
-
-            <div className="form">
-                <h1>Verify OTP</h1>
-
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <input
-                            type="text"
-                            value={currOTP.fname}
-                            name='fname'
-                            onChange={handleChange}
-                            placeholder='First Name'
-                        />
-                        <br></br>
-                    </div>
-
-                    <button type="submit">Submit</button>
-
-                </form>
-            </div>
-        </div>
-    )
-
-}
-
-export default Signup
+export default OtpVerification;
