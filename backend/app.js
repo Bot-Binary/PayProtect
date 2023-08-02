@@ -44,6 +44,8 @@ const otp_verification_function = require("./db_functions/otp_verification");
 
 const child_signup = require("./db_functions/child_signup");
 
+const login = require("./general_functions/login");
+
 
 
 
@@ -58,6 +60,9 @@ app.post("/otp",otp_function);
 app.post("/otp_verification",otp_verification_function);
 
 app.post("/child/signup",child_signup);
+
+app.get("/login",login);
+
 
 
 app.post("/home",(req,res)=>{
