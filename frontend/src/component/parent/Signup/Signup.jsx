@@ -3,7 +3,7 @@ import './signup.css'
 import { POSTsignup } from '../../../utilities/axios/Paths';
 import { checkIfAllValuesAreEmpty } from '../../../utilities/axios/extrafns';
 
-const Signup = (setOtpSent, setPhone) => {
+const Signup = params => {
 
     // const navigate = useNavigate();
 
@@ -52,13 +52,13 @@ const Signup = (setOtpSent, setPhone) => {
         event.preventDefault();
 
         const tmp = await POSTsignup(formData);
-        // console.log(tmp)
 
         setErrors(tmp);
         const isempty = checkIfAllValuesAreEmpty(tmp)
+
         if (isempty === true) {
-            setPhone(FormData.phone)
-            setOtpSent(true)
+            params.setPhone(FormData.phone)
+            params.setOtpSent(true)
         }
     }
 
@@ -123,18 +123,20 @@ const Signup = (setOtpSent, setPhone) => {
 
                     </div>
 
-                    <div>
-                        <div className='dob'>
+                    <div className='dob'>
+                        <span>
                             Date of birth
-                        </div>
-                        <input
-                            type="date"
-                            value={formData.dob}
-                            onChange={handleChange}
-                            name='dob'
-                            placeholder='Date Of Birth'
-                        />
-                        {errors.dob && <p className="errors">{errors.dob}</p>}
+                        </span>
+                        <span>
+                            <input
+                                type="date"
+                                value={formData.dob}
+                                onChange={handleChange}
+                                name='dob'
+                                placeholder='Date Of Birth'
+                            />
+                            {errors.dob && <p className="errors">{errors.dob}</p>}
+                        </span>
                     </div>
 
                     <div>

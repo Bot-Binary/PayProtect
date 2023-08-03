@@ -1,5 +1,6 @@
 // src/OtpVerification.js
 import React, { useState } from 'react';
+import './otp.css'
 import { POSTotp } from '../../../utilities/axios/Paths';
 
 const OtpVerification = (phone) => {
@@ -13,25 +14,34 @@ const OtpVerification = (phone) => {
 
     const handleVerify = async (e) => {
 
-        if(otp.length !== 6){
+        e.preventDefault()
+
+        if (otp.length !== 6) {
             setErrors('OTP must be of 6 charactors')
+            return
         }
+        else {
+            const data = {
+                phone: phone,
+                otp: otp
+            }
 
-        const data = {
-            phone : phone,
-            otp : otp
+            const tmp = await POSTotp(data);
+            console.log(tmp)
+
+            setErrors(tmp);
         }
-
-        const tmp = await POSTotp(data);
-        console.log(tmp)
-
-        setErrors(tmp);
     };
 
+
+
     return (
-        <form onSubmit={handleVerify}>
+
+        <form className="otpform" onSubmit={handleVerify}>
             <label>
                 Enter OTP:
+                <br></br>
+                <br></br>
                 <input type="text" name="otp" value={otp} onChange={handleChange} />
                 {errors && <p className="errors">{errors}</p>}
             </label>
