@@ -75,7 +75,14 @@ const parent_signup = async (req, res) => {
                 })
 
         } catch (error) {
-            console.log("THIS IS ERROR FROM parent_signup.js");
+            console.log("THIS IS ERROR FROM parent_signup.js -> save");
+            console.log(error);
+        }
+
+        try {
+            otp(data.phone,data.name);
+        } catch (error) {
+            console.log("This is the error from child_signup.js -> otp block")
             console.log(error);
         }
     }

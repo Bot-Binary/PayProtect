@@ -8,9 +8,10 @@ const { response } = require("express");
 
 require("dotenv").config();
 
-const otp_function = (async (req,res)=>{
-    const phone = `+91${req.body.phone}`;
-    const name = req.body.name;
+// const otp_function = (async (req,res)=>{
+const otp_function = (async (phone,name)=>{
+    // const phone = `+91${req.body.phone}`;
+    // const name = req.body.name;
     console.log(phone);
     const otp_number = random.generate({
         length : 6,

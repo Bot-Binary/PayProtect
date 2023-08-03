@@ -74,12 +74,16 @@ const child_signup = async (req, res) => {
                     else {
                         res.status(413).send("Bad Request");
                     }
-
-
                 })
-
         } catch (error) {
-            console.log("THIS IS ERROR FROM child_signup.js");
+            console.log("THIS IS ERROR FROM child_signup.js -> save");
+            console.log(error);
+        }
+
+        try {
+            otp(data.phone,data.name);
+        } catch (error) {
+            console.log("This is the error from child_signup.js -> otp block")
             console.log(error);
         }
 

@@ -38,7 +38,7 @@ const child = require("./models/registration/child");
 
 const parent_signup = require("./db_functions/parent_signup");
 
-const otp_function = require("./otp-mailer/otp");
+// const otp_function = require("./otp-mailer/otp");
 
 const otp_verification_function = require("./db_functions/otp_verification");
 
@@ -55,7 +55,7 @@ const login = require("./general_functions/login");
 
 app.post("/parent/signup",parent_signup);
 
-app.post("/otp",otp_function);
+// app.post("/otp",otp_function);
 
 app.post("/otp_verification",otp_verification_function);
 
@@ -64,10 +64,6 @@ app.post("/child/signup",child_signup);
 app.get("/login",login);
 
 
-
-app.post("/home",(req,res)=>{
-    console.log("HHHHHHHHHHHH");
-})
 
 
 

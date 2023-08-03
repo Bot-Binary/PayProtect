@@ -4,10 +4,14 @@ const bcrypt = require("bcryptjs");
 
 // DB model
 const otp = require("../models/verification/otp");
+const parent = require("../models/registration/parents");
+const child = require("../models/registration/child");
+
 
 
 const otp_verification = (async(req,res)=>{
-    const phone = `+91${req.body.phone}`;
+    const phone_ = req.body.phone;
+    const phone = `+91${phone_}`;
     const otp_number = req.body.otp;
 
     const data = await otp.findOne({phone:phone});
@@ -18,6 +22,8 @@ const otp_verification = (async(req,res)=>{
         res.status(200).send();
     }
     else{
+        const dlt = await parent.deleteOne({phone:phone_});
+        
         res.status(288).send();
     }
 
