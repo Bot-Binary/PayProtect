@@ -9,6 +9,7 @@ const child = require("../models/registration/child");
 
 const login = (async (req,res)=>{
     const data = req.body;
+    console.log(data);
     const type = data.type;
     const phone = data.phone;
     const password = data.password;
