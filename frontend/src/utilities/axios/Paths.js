@@ -128,7 +128,7 @@ async function POSTlogin(data) {
         const res = await axios.post(`${BaseURL}/login`, data)
         console.log(res);
 
-        Navigate('/otp')
+        // Navigate('')
 
         // 200 : perfect
         // 288 : wrong credentials
