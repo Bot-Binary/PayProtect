@@ -129,6 +129,8 @@ async function POSTlogin(data) {
         console.log(res);
 
         // Navigate('')
+        // Navigate('/Dashboard')
+        // return;
 
         // 200 : perfect
         // 288 : wrong credentials
@@ -144,7 +146,7 @@ async function POSTlogin(data) {
             errors.phone = "phone No. not Registered.";
         }
         else if (err.response.status === 288) {
-            errors.email = "Password is incorrect";
+            errors.password = "Password is incorrect";
         }
     }
 

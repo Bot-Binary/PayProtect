@@ -3,6 +3,7 @@ import Signupparent from './component/parent/Signup/signupparent';
 import Home from './Home'
 import Login from './component/parent/Login/Login';
 import OtpVerification from './component/parent/Signup/Otp';
+import Dashboard from './component/parent/Dashboard/Dashboard';
 import { Link, Routes, Route, BrowserRouter } from 'react-router-dom';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
                     <Route index element={<Signupparent />} />
                     <Route path="signup" element={<Signupparent />} />
                     <Route path="login" element={<Login />} />
+                    <Route path="dashboard" element={<Dashboard />} />
                 </Route> 
             </Routes>
         </>

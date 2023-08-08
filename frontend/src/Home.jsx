@@ -18,6 +18,9 @@ const Home = () => {
                     <li>
                         <Link to="/parent/login">Login</Link>
                     </li>
+                    <li>
+                        <Link to="/parent/dashboard">Parent Dashboard</Link>
+                    </li>
                 </ul>
             </nav>
         </div>

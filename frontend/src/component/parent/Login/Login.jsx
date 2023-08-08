@@ -3,6 +3,7 @@ import '../Signup/signup.css'
 import { POSTlogin } from '../../../utilities/axios/Paths';
 import { checkIfAllValuesAreEmpty } from '../../../utilities/axios/extrafns';
 import OtpVerification from '../Signup/Otp';
+import { Navigate } from 'react-router-dom';
 
 const Login = params => {
 
@@ -49,12 +50,17 @@ const Login = params => {
         if (isempty === true) {
             setPhone(FormData.phone)
             setOtpSent(true)
+            console.log("here\n")
         }
+        
+        // Navigate('/dashboard')
+
+        
     }
 
     return (
         <div>
-            {!otpSent ? (
+            {/* {!otpSent ? ( */}
                 < div className="signup" >
                     <div className="form">
                         <h1>Login</h1>
@@ -83,8 +89,8 @@ const Login = params => {
                         </form>
                     </div>
                 </div >
-            ) : <OtpVerification />
-            }
+            {/* ) : <OtpVerification  */}
+            {/* } */}
         </div>
     )
 }
