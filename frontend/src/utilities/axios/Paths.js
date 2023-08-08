@@ -1,5 +1,7 @@
 import axios from 'axios';
 import ValidateData from '../validator/validate';
+import { Navigate, useNavigate } from "react-router-dom";
+
 // import { Navigate, useNavigate } from "react-router-dom"
 
 // const BaseURL = "https://bot-binary-psychic-space-waddle-7qp6gr974vghr7p9-8000.preview.app.github.dev";
@@ -50,6 +52,8 @@ async function POSTsignup(data) {
         const res = await axios.post(`${BaseURL}/parent/signup`, data)
         console.log(res);
 
+        Navigate('/otp')
+
         // 410 : email already exist
         // 411 : phone already exists
         // 400 : username already exist
@@ -75,9 +79,9 @@ async function POSTsignup(data) {
     return errors
 }
 
-async function POSTotp(data){
+async function POSTotp(data) {
     try {
-        const res = await axios.post(`${BaseURL}/otp`, data)
+        const res = await axios.post(`${BaseURL}/otp_verification`, data)
         console.log(res);
 
         // 200 verified
@@ -89,5 +93,63 @@ async function POSTotp(data){
     }
 }
 
+async function POSTlogin(data) {
 
-export {POSTsignup, POSTotp}
+    console.log(data);
+
+    const errors = {
+        phone: ''
+    };
+
+    if (data.phone.length !== 10) {
+        errors.phone = 'Phone no. must have 10 digits'
+        return errors
+    }
+
+    var re = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+    if (!re.test(data.phone)) {
+        errors.phone = 'Phone no. is invalid.'
+        return errors
+    }
+
+    console.log(errors)
+
+    var hasSomething = false;
+
+    if (errors.phone.length !== 0) {
+        hasSomething = true;
+    }
+
+    console.log("someting : " + hasSomething);
+
+    if (hasSomething === true) return errors;
+
+    try {
+        const res = await axios.post(`${BaseURL}/login`, data)
+        console.log(res);
+
+        Navigate('/otp')
+
+        // 200 : perfect
+        // 288 : wrong credentials
+        // 404 : not found
+
+        // return errors;
+    }
+    catch (err) {
+        console.log(err)
+        // return ( e );
+
+        if (err.response.status === 404) {
+            errors.phone = "phone No. not Registered.";
+        }
+        else if (err.response.status === 288) {
+            errors.email = "Password is incorrect";
+        }
+    }
+
+    return errors
+}
+
+
+export { POSTsignup, POSTotp, POSTlogin }

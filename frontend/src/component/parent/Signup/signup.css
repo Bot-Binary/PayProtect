@@ -1,10 +1,11 @@
 .signup {
-    height: 100vh;
+    min-height: 100vh;
     background-color: rgba(53, 83, 107, 0.3);
     /* padding: 1rem; */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
 }
 
@@ -19,6 +20,7 @@ h1 {
     border-radius: 10px;
     box-shadow: 0 19px 38px rgba(11, 69, 117, 0.30), 0 15px 31px rgba(11, 69, 117, 0.22);
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -31,23 +33,30 @@ h1 {
     /* border-radius: 2rem; */
 }
 
-
 form>div {
-    margin-top: 2rem;
+    margin-top : 1.5rem;
 }
 
 .dob {
-    margin-right: 10px;
+    display: flex;
     color: grey;
+    font-size: 15px;
 }
 
+
 input {
+    /* margin-top: 1.5rem; */
     outline: none;
     width: 300px;
     /* small device it is auto */
     border: 0;
     font-size: 15px;
     border-bottom: 2px solid black;
+}
+
+.dob > span > input{
+    width: 100%;
+    margin-left: 1.5rem;
 }
 
 input::placeholder {
@@ -60,6 +69,7 @@ input::placeholder {
     font-size: 11px;
     margin-block-start: 0.2rem;
     margin-block-end: 0;
+    margin-bottom: -0.7rem;
 }
 
 button {
@@ -82,6 +92,10 @@ button {
 
     input {
         width: 70vw;
+    }
+
+    .dob > input{
+        width : 50%;
     }
 
     button {
