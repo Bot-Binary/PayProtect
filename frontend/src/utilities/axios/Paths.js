@@ -125,7 +125,7 @@ async function POSTlogin(data) {
     if (hasSomething === true) return errors;
 
     try {
-        const res = await axios.post(`${BaseURL}/login`, data);
+        const res = await axios.post(`${BaseURL}/login`, data)
         console.log(res);
 
         Navigate('/otp')
