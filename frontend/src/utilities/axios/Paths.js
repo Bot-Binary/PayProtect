@@ -125,7 +125,6 @@ async function POSTlogin(data) {
     if (hasSomething === true) return errors;
 
     try {
-        console.log(data);
         const res = await axios.post(`${BaseURL}/login`, data)
         console.log(res);
 

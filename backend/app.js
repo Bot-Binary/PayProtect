@@ -73,9 +73,9 @@ app.post("/otp_verification",otp_verification_function);
 
 app.post("/child/signup",child_signup);
 
-app.get("/login",login);
+app.post("/login",login);
 
-app.post("/dlt",dlt);
+// app.post("/dlt",dlt);
 
 
 
