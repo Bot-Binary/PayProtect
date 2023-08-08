@@ -46,7 +46,7 @@ const child_signup = require("./db_functions/child_signup");
 
 const login = require("./general_functions/login");
 
-
+const register_mpin = require("./general_functions/register_mpin");
 
 
 
@@ -77,7 +77,7 @@ app.post("/login",login);
 
 // app.post("/dlt",dlt);
 
-
+app.post("/register_mpin",register_mpin);
 
 
 

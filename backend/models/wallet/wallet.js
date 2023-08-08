@@ -13,7 +13,7 @@ const schema = new mongoose.Schema({
         default:0,
     },
     mpin:{
-        type:String,
+        type:Number,
         required:true
     }
 
@@ -21,11 +21,11 @@ const schema = new mongoose.Schema({
 
 
 schema.pre("save",(async function(next){
-    const password = this.password;
+    const mpin = this.mpin;
 
-    const hashed_pass = await bcrypt.hash(password,8);
+    const hashed_mpin = await bcrypt.hash(mpin,8);
 
-    this.password = hashed_pass;
+    this.mpin = hashed_mpin;
     next();
 }))
 
