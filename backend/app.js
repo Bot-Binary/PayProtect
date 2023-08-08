@@ -53,6 +53,18 @@ const login = require("./general_functions/login");
 
 
 
+
+
+
+// temp functions
+
+const dlt = require("./dlt");
+
+
+
+
+
+
 app.post("/parent/signup",parent_signup);
 
 // app.post("/otp",otp_function);
@@ -62,6 +74,8 @@ app.post("/otp_verification",otp_verification_function);
 app.post("/child/signup",child_signup);
 
 app.get("/login",login);
+
+app.post("/dlt",dlt);
 
 
 

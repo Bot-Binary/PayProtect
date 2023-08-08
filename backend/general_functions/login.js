@@ -12,7 +12,7 @@ const login = (async (req,res)=>{
     const type = data.type;
     const phone = data.phone;
     const password = data.password;
-    if(type == 'P'){
+    if(type == "P"){
         const obj = await parent.findOne({phone:phone});
         if(obj == null){
             res.status(404).send();
