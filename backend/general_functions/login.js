@@ -20,8 +20,18 @@ const login = (async (req,res)=>{
         }
         const real_password = obj.password;
         const password_match = await bcrypt.compare(password,real_password);
+        
+        const pipe=[{
+            $project :{
+                _id:0,
+                password:0
+            }
+        }]
+
+        const aggrigated_obj = await parent.aggregate(pipe);
+
         if(password_match == true){
-            res.status(200).send(obj);
+            res.status(200).send(aggrigated_obj);
         }
         else{
             res.status(211).send();
@@ -34,8 +44,19 @@ const login = (async (req,res)=>{
         }
         const real_password = obj.password;
         const password_match = await bcrypt.compare(password,real_password);
+
+        const pipe=[{
+            $project :{
+                _id:0,
+                password:0
+            }
+        }]
+
+        const aggrigated_obj = await parent.aggregate(pipe);
+
+
         if(password_match == true){
-            res.status(200).send(obj);
+            res.status(200).send(aggrigated_obj);
         }
         else{
             res.status(211).send();
