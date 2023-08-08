@@ -125,11 +125,11 @@ async function POSTlogin(data) {
     if (hasSomething === true) return errors;
 
     try {
-        console.log("dfhhgsd");
-        const res = await axios.get(`${BaseURL}/login`, data)
+        console.log(data);
+        const res = await axios.post(`${BaseURL}/login`, data)
         console.log(res);
 
-        Navigate('/otp')
+        // Navigate('')
 
         // 200 : perfect
         // 288 : wrong credentials
