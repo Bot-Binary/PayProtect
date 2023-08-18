@@ -5,6 +5,11 @@
     justify-content: space-evenly;
 }
 
+h1{
+    font-size: 2.6rem;
+    margin-left : 27px;
+}
+
 @media screen and (max-width: 1200px) {
     .MainDash{
         justify-content:flex-start;

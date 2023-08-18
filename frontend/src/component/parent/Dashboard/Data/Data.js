@@ -3,9 +3,11 @@ import {
   UilEstate,
   UilClipboardAlt,
   UilUsersAlt,
+  UilHistory,
   UilPackage,
   UilChart,
   UilSignOutAlt,
+  UilSetting
 } from "@iconscout/react-unicons";
 
 // Analytics Cards imports
@@ -24,32 +26,32 @@ export const SidebarData = [
     heading: "Dashboard",
   },
   {
-    icon: UilClipboardAlt,
-    heading: "Orders",
-  },
-  {
     icon: UilUsersAlt,
-    heading: "Customers",
+    heading: "Children",
   },
   {
-    icon: UilPackage,
-    heading: 'Products'
+    icon: UilHistory,
+    heading: "History",
   },
   {
-    icon: UilChart,
-    heading: 'Analytics'
+    icon: UilSetting,
+    heading: 'Settings'
   },
+//   {
+//     icon: UilChart,
+//     heading: 'Analytics'
+//   },
 ];
 
 // Analytics Cards Data
 export const cardsData = [
   {
-    title: "Sales",
+    title: "Balance",
     color: {
       backGround: "linear-gradient(180deg, #00BE98 0%, #00BE98 100%)",
-      boxShadow: "0px 10px 20px 0px #00BE98",
+      boxShadow: "0px 10px 20px 0px #00b38f",
     },
-    barValue: 70,
+    barValue: 0,
     value: "25,970",
     png: UilUsdSquare,
     series: [
@@ -60,11 +62,11 @@ export const cardsData = [
     ],
   },
   {
-    title: "Revenue",
+    title: "Total Spent",
     color: {
       backGround: 
       "linear-gradient(rgb(248, 212, 154) -146.42%, rgb(255 202 113) -46.42%)",
-      boxShadow: "0px 10px 20px 0px #FDC0C7",
+      boxShadow: "0px 10px 20px 0px #F9D59B",
     },
     barValue: 80,
     value: "14,270",
@@ -76,23 +78,23 @@ export const cardsData = [
         },
     ],
 },
-{
-    title: "Expenses",
-    color: {
-        backGround:
-        "linear-gradient(180deg, #8BE07F 0%, #8BE07F 100%)",
-      boxShadow: "0px 10px 20px 0px #F9D59B",
-    },
-    barValue: 60,
-    value: "4,270",
-    png: UilClipboardAlt,
-    series: [
-      {
-        name: "Expenses",
-        data: [10, 25, 15, 30, 12, 15, 20],
-      },
-    ],
-  },
+// {
+//     title: "Expenses",
+//     color: {
+//         backGround:
+//         "linear-gradient(180deg, #8BE07F 0%, #8BE07F 100%)",
+//       boxShadow: "0px 10px 20px 0px #8BE07F",
+//     },
+//     barValue: 60,
+//     value: "4,270",
+//     png: UilClipboardAlt,
+//     series: [
+//       {
+//         name: "Expenses",
+//         data: [10, 25, 15, 30, 12, 15, 20],
+//       },
+//     ],
+//   },
 ];
 
 // Recent Update Card Data

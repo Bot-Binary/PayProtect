@@ -12,13 +12,14 @@ const Card = (props) => {
     const [expanded, setExpanded] = useState(false);
     return (
         // <AnimateSharedLayout>
-        <motion.div>
-            {expanded ? (
+        <div>
+            {/* {expanded ? (
                 <ExpandedCard param={props} setExpanded={() => setExpanded(false)} />
             ) : (
                 <CompactCard param={props} setExpanded={() => setExpanded(true)} />
-            )}
-        </motion.div>
+            )} */}
+            <CompactCard param={props}/>
+        </div>
     );
 };
 
@@ -36,10 +37,10 @@ function CompactCard({ param, setExpanded }) {
             onClick={setExpanded}
         >
             <div className="radialBar">
-                <CircularProgressbar
+                {/* <CircularProgressbar
                     value={param.barValue}
                     text={`${param.barValue}%`}
-                />
+                /> */}
                 <span>{param.title}</span>
             </div>
             <div className="detail">
