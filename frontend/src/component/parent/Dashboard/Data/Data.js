@@ -7,6 +7,7 @@ import {
   UilPackage,
   UilChart,
   UilSignOutAlt,
+  UilLock,
   UilSetting
 } from "@iconscout/react-unicons";
 
@@ -37,10 +38,10 @@ export const SidebarData = [
     icon: UilSetting,
     heading: 'Settings'
   },
-//   {
-//     icon: UilChart,
-//     heading: 'Analytics'
-//   },
+  {
+    icon: UilLock,
+    heading: 'M-Pin'
+  },
 ];
 
 // Analytics Cards Data
