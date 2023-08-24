@@ -1,27 +1,27 @@
 import React, { useState } from 'react'
 import '../Signup/signup.css'
-import { POSTlogin } from '../../../utilities/axios/Paths';
+import { POSTmpin } from '../../../utilities/axios/Paths';
 import { checkIfAllValuesAreEmpty } from '../../../utilities/axios/extrafns';
 import OtpVerification from '../Signup/Otp';
 
-const Login = params => {
+const Mpin = params => {
 
     // const navigate = useNavigate();
 
     const [formData, setFormData] = useState(
         {
-            phone: '',
+            id: '21e19a69-f665-4860-ab61-071f7892fa7bP',
+            mpin: '',
             password: '',
             type: "P"
         }
     )
 
-    const [otpSent, setOtpSent] = useState(false);
-    const [phone, setPhone] = useState('');
+    // const [mpin, setMpin] = useState('');
 
     const [errors, setErrors] = useState(
         {
-            phone: '',
+            mpin: '',
             password: ''
         }
     )
@@ -41,16 +41,10 @@ const Login = params => {
     async function handleSubmit(event) {
         event.preventDefault();
 
-        const tmp = await POSTlogin(formData);
+        const tmp = await POSTmpin(formData);
 
         setErrors(tmp);
         const isempty = checkIfAllValuesAreEmpty(tmp)
-
-        if (isempty === true) {
-            setPhone(FormData.phone)
-            setOtpSent(true)
-            console.log("here\n")
-        }
         
         // Navigate('/dashboard')
 
@@ -66,13 +60,13 @@ const Login = params => {
                         <form onSubmit={handleSubmit}>
                             <div>
                                 <input
-                                    type="tel"
-                                    value={formData.phone}
-                                    name='phone'
+                                    type="number"
+                                    value={formData.mpin}
+                                    name='mpin'
                                     onChange={handleChange}
-                                    placeholder='Phone No.'
+                                    placeholder='M-Pin'
                                 />
-                                {errors.phone && <p className="errors">{errors.phone}</p>}
+                                {errors.mpin && <p className="errors">{errors.mpin}</p>}
                             </div>
                             <div>
                                 <input
@@ -94,4 +88,4 @@ const Login = params => {
     )
 }
 
-export default Login
+export default Mpin
