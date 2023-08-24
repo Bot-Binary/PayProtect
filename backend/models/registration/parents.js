@@ -86,6 +86,10 @@ const schema = mongoose.Schema({
     created_at:{
         type:Date,
         default:Date.now
+    },
+    mpin:{
+        type:Boolean,
+        default:false
     }
 
 })
