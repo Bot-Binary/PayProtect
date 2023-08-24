@@ -20,9 +20,9 @@ export default function AddMoney() {
 
     return (
         <div>
-            <Button className="topone" variant="contained" onClick={handleClickOpen}>
+            <button className="modalbutton" variant="contained" onClick={handleClickOpen}>
                 Add Money
-            </Button>
+            </button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Add Money</DialogTitle>
                 <DialogContent>

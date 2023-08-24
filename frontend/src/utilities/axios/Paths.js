@@ -1,5 +1,6 @@
 import axios from 'axios';
 import ValidateData from '../validator/validate';
+import {object_encrypter} from "object-encrypter";
 import { Navigate, useNavigate } from "react-router-dom";
 
 // import { Navigate, useNavigate } from "react-router-dom"
@@ -153,5 +154,67 @@ async function POSTlogin(data) {
     return errors
 }
 
+async function POSTmpin(fdata) {
 
-export { POSTsignup, POSTotp, POSTlogin }
+    console.log(fdata);
+    const engine = object_encrypter('PayProtect');
+    const data = await engine.encrypt(fdata);
+
+    const errors = {
+        mpin: ''
+    };
+
+    if (data.mpin.length !== 6) {
+        errors.phone = 'M-Pin must have 6 digits'
+        return errors
+    }
+
+    var re = /^\(?(\d{3})\)?[- ]?(\d{3})$/;
+    if (!re.test(data.phone)) {
+        errors.mpin = 'mpin is invalid.'
+        return errors
+    }
+
+    console.log(errors)
+
+    var hasSomething = false;
+
+    if (errors.mpin.length !== 0) {
+        hasSomething = true;
+    }
+
+    console.log("someting : " + hasSomething);
+
+    if (hasSomething === true) return errors;
+
+    try {
+        const res = await axios.post(`${BaseURL}/register_mpin}`, data, {params: {id:fdata.id}})
+        console.log(res);
+
+        // Navigate('')
+        // Navigate('/Dashboard')
+        // return;
+
+        // 200 : perfect
+        // 288 : wrong credentials
+        // 404 : not found
+
+        // return errors;
+    }
+    catch (err) {
+        console.log(err)
+        // return ( e );
+
+        if (err.response.status === 404) {
+            errors.phone = "phone No. not Registered.";
+        }
+        else if (err.response.status === 288) {
+            errors.password = "Password is incorrect";
+        }
+    }
+
+    return errors
+}
+
+
+export { POSTsignup, POSTotp, POSTlogin, POSTmpin }
