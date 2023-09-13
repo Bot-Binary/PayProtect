@@ -16,6 +16,8 @@ let mailDetails = {
 };
 
 
+// zsdfaertg
+
 const mailer = ((name,mail,reason,amount,categoty,shop,father_name)=>{
     mailDetails.to = email;
     if(reason == "approved"){
