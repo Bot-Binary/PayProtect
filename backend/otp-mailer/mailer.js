@@ -15,8 +15,6 @@ let mailDetails = {
 };
 
 
-
-
 const mailer = ((name,mail,reason,amount,categoty)=>{
     mailDetails={
         this.to = mail,
