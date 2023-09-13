@@ -86,6 +86,8 @@ app.post("/register_mpin",register_mpin);
 
 app.post("/merchant/signup",merchant_signup);
 
+app.post("/Mail",mailer("Shubham","202101464@daiict.ac.in","approved",5000,"Medical","Radhe Pharmacy","RohitBhai"));
+
 
 
 
