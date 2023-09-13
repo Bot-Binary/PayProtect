@@ -31,6 +31,7 @@ require("./db/connect");
 const parent = require("./models/registration/parents");
 const wallet = require("./models/wallet/wallet");
 const child = require("./models/registration/child");
+const merchant = require("./models/registration/merchant");
 
 
 
@@ -47,6 +48,10 @@ const child_signup = require("./db_functions/child_signup");
 const login = require("./general_functions/login");
 
 const register_mpin = require("./general_functions/register_mpin");
+
+const merchant_signup = require("./db_functions/merchant_signup");
+
+const mailer = require("./otp-mailer/mailer");
 
 
 
@@ -78,6 +83,8 @@ app.post("/login",login);
 // app.post("/dlt",dlt);
 
 app.post("/register_mpin",register_mpin);
+
+app.post("/merchant/signup",merchant_signup);
 
 
 

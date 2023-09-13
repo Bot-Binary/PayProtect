@@ -25,7 +25,7 @@ const otp_function = (async (phone,name)=>{
         'content-type': 'application/json',
         Authorization: 'Basic MjAyMTAxNDY0QGRhaWljdC5hYy5pbjpBYmMxMjNAIyQ=',
         'Content-Type': 'application/json',
-        'X-RapidAPI-Key': 'd19c51521amsh30a2f46a2a67ffbp10da37jsn0b95175f627a',
+        'X-RapidAPI-Key': '',
         'X-RapidAPI-Host': 'clicksend.p.rapidapi.com'
     },
     data: {
@@ -67,7 +67,7 @@ const otp_function = (async (phone,name)=>{
         // res.status(res_status).send();
 
         // console.log(response);
-        console.log("YYY");
+        // console.log("YYY");
     } catch (error) {
         res.status(299).send();
         // Jay pase set karavanu 6
