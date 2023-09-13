@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
 const validator = require("validator");
+const bcrypt = require("bcryptjs");
 
-const schema = new mongoose.Schema({
-    id: {
-        type: String
+const schema = mongoose.Schema({
+    id:{
+        type:String,
+        unique:true
     },
     fname: {
         type: String,
@@ -44,21 +45,9 @@ const schema = new mongoose.Schema({
             }
         },
     },
-    dob: {
-        type: Date,
-        required: true,
-        validate(d) {
-            if (validator.isDate(d)) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-    },
     username: {
         type: String,
-        unique: true,
+        unique:true,
         required: true,
     },
     payid: {
@@ -69,16 +58,12 @@ const schema = new mongoose.Schema({
         type: String,
         required: true
     },
-    parent:{
-        type:{
-            parent_id : {
-                type:String
-            },
-            date:{
-                type:Date,
-                default : Date.now
+    category: {
+        type: [
+            {
+                type : String
             }
-        }
+        ]
     },
     created_at:{
         type:Date,
@@ -88,6 +73,7 @@ const schema = new mongoose.Schema({
         type:Boolean,
         default:false
     }
+
 })
 
 schema.pre("save",(async function(next){
@@ -100,6 +86,6 @@ schema.pre("save",(async function(next){
     next();
 }))
 
-const child = mongoose.model("child",schema);
+const merchant = mongoose.model("merchant",schema);
 
-module.exports = child;
+module.exports = merchant;

@@ -4,11 +4,7 @@ import Home from './Home'
 import ParentLogin from './component/parent/Login/Login';
 import OtpVerification from './component/parent/Signup/Otp';
 import Dashboard from './component/parent/Dashboard/Dashboard';
-
-import {Routes, Route } from 'react-router-dom';
-import Mpin from './component/parent/Mpin/Mpin';
-import MerchantLogin from './component/Merchant/Login/MerchantLogin';
-import MerchantSignup from './component/Merchant/Signup/MerchantSignup';
+import { Link, Routes, Route, BrowserRouter } from 'react-router-dom';
 
 function App() {
     return (

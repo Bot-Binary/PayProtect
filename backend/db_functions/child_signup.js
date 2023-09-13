@@ -8,6 +8,7 @@ const { v4: uuidv4 } = require('uuid');
 // models
 const child = require("../models/registration/child");
 const parent = require("../models/registration/parents");
+const merchant = require("../models/registration/merchant");
 
 
 
@@ -22,15 +23,17 @@ const child_signup = async (req, res) => {
     // const phone = req.body.phone;
     // const email = req.body.email;
 
-    const already_exist_phone = await parent.findOne({ phone: req.body.phone });
-    const already_exist_email = await parent.findOne({ email: req.body.email });
+    const already_exist_phone_p = await parent.findOne({ phone: req.body.phone });
+    const already_exist_email_p = await parent.findOne({ email: req.body.email });
+    const already_exist_phone_m = await merchant.findOne({ phone: req.body.phone });
+    const already_exist_email_m = await merchant.findOne({ email: req.body.email });
 
-    console.log(already_exist_email);
-    console.log(already_exist_phone);
+    // console.log(already_exist_email);
+    // console.log(already_exist_phone);
 
 
 
-    if (already_exist_phone != null || already_exist_email != null) {
+    if (already_exist_phone_p != null || already_exist_email_p != null || already_exist_phone_m != null || already_exist_email_m != null) {
         res.status(399).send("Alredy Exist");
     }
     else {
@@ -81,7 +84,7 @@ const child_signup = async (req, res) => {
         }
 
         try {
-            otp(data.phone,data.name);
+            // otp(data.phone,data.name);
         } catch (error) {
             console.log("This is the error from child_signup.js -> otp block")
             console.log(error);
