@@ -22,7 +22,10 @@ const Home = () => {
                         <Link to="/parent/dashboard">Parent Dashboard</Link>
                     </li>
                     <li>
-                        <Link to="/parent/mpin">M-Pin</Link>
+                        <Link to="/merchant/signup">Merchant Dashboard</Link>
+                    </li>
+                    <li>
+                        <Link to="/merchant/login">Merchant Dashboard</Link>
                     </li>
                 </ul>
             </nav>
