@@ -1,3 +1,15 @@
+.modalbutton{
+    height : 3rem;
+    width : 70%;
+    background-color: #0B4575;
+    box-shadow: var(--smboxShadow);
+    margin-top: 1rem;
+}
+
+.modalbutton:hover{
+    cursor: pointer;
+}
+
 .RightSide{
     display: flex;
     flex-direction: column;
@@ -5,6 +17,7 @@
     width: 95%;
     justify-content: space-evenly;
 }
+
 
 
 @media screen and (max-width: 1200px) {

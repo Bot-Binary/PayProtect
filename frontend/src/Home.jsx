@@ -21,6 +21,15 @@ const Home = () => {
                     <li>
                         <Link to="/parent/dashboard">Parent Dashboard</Link>
                     </li>
+                    <li>
+                        <Link to="/parent/mpin">M-Pin</Link>
+                    </li>
+                    <li>
+                        <Link to="/merchant/signup">Merchant signup</Link>
+                    </li>
+                    <li>
+                        <Link to="/merchant/login">Merchant login</Link>
+                    </li>
                 </ul>
             </nav>
         </div>

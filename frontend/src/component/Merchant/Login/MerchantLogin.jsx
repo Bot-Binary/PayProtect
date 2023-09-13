@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import '../Signup/signup.css'
-import { POSTlogin } from '../../../utilities/axios/Paths';
+import { MerchantPOSTlogin } from '../../../utilities/axios/Paths';
 import { checkIfAllValuesAreEmpty } from '../../../utilities/axios/extrafns';
-import OtpVerification from '../Signup/Otp';
+// import OtpVerification from '../Signup/Otp';
 
-const ParentLogin = params => {
+const MerchantLogin = params => {
 
     // const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ const ParentLogin = params => {
         {
             phone: '',
             password: '',
-            type: "P"
+            type: "M"
         }
     )
 
@@ -41,7 +41,7 @@ const ParentLogin = params => {
     async function handleSubmit(event) {
         event.preventDefault();
 
-        const tmp = await POSTlogin(formData);
+        const tmp = await MerchantPOSTlogin(formData);
 
         setErrors(tmp);
         const isempty = checkIfAllValuesAreEmpty(tmp)
@@ -94,4 +94,4 @@ const ParentLogin = params => {
     )
 }
 
-export default ParentLogin
+export default MerchantLogin

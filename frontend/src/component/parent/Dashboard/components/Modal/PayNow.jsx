@@ -6,23 +6,39 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import QrCodePlugin from './QrCodePlugin';
 
-export default function PayNow() {
-    const [open, setOpen] = React.useState(false);
+export default function PayNow({modalOpen, setModalOpen}) {
 
-    const handleClickOpen = () => {
+    console.log("paynow");
+    const [open , setOpen] = React.useState(false)
+
+    const handleClickOpen = (e) => {
+        // setIsQrOpened(true);
         setOpen(true);
     };
 
+    
+
     const handleClose = () => {
+        // setIsQrOpened(false);
         setOpen(false);
+    };
+
+
+
+    const onNewScanResult = (decodedText, decodedResult) => {
+        // handle decoded results here
+        console.log("decodedText : " + decodedText);
+        console.log("decodedResult : " + decodedResult);
     };
 
     return (
         <div>
-            <Button variant="contained" onClick={handleClickOpen}>
+            <button className='modalbutton' onClick={handleClickOpen}>
                 Pay Now
-            </Button>
+            </button>
+
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Pay Now</DialogTitle>
                 <DialogContent>
@@ -43,14 +59,15 @@ export default function PayNow() {
                         Or
                     </DialogContentText>
 
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="name"
-                        label="Upload QR"
-                        type="file"
-                        fullWidth
-                        variant="standard"
+                    {
+                        console.log("Hereeee")
+                    }
+
+                    <QrCodePlugin
+                        fps={10}
+                        qrbox={250}
+                        disableFlip={false}
+                        qrCodeSuccessCallback={onNewScanResult}
                     />
 
                 </DialogContent>

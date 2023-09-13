@@ -1,15 +1,3 @@
-:root {
-  --yellow: linear-gradient(180deg, #006E9A -146.42%, #0098A5 -46.42%);
-  --orange: #00BE98;
-  --black: #242d49;
-  --gray: #788097;
-  --purple: linear-gradient(180deg, 006E9A 0%, #0098A5 100%);
-  --pink: #0B4575;
-  --glass: rgba(255, 255, 255, 0.54);
-  --boxShadow: 0px 19px 60px rgb(0 0 0 / 8%);
-  --smboxShadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
-  --activeItem: #DEF2FF;
-}
 
 .App {
   /* padding: 0.5rem 3.5rem; */

@@ -33,7 +33,7 @@ const ValidateData = (FormData) => {
     if (!FormData.mname) {
         errors.mname = 'Middle name is required'
     }
-
+    
     if (!FormData.phone) {
         errors.phone = 'Phone no. is required'
     }

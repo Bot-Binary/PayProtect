@@ -1,10 +1,14 @@
 import './App.css';
 import Signupparent from './component/parent/Signup/signupparent';
 import Home from './Home'
-import Login from './component/parent/Login/Login';
+import ParentLogin from './component/parent/Login/Login';
 import OtpVerification from './component/parent/Signup/Otp';
 import Dashboard from './component/parent/Dashboard/Dashboard';
-import { Link, Routes, Route, BrowserRouter } from 'react-router-dom';
+
+import {Routes, Route } from 'react-router-dom';
+import Mpin from './component/parent/Mpin/Mpin';
+import MerchantLogin from './component/Merchant/Login/MerchantLogin';
+import MerchantSignup from './component/Merchant/Signup/MerchantSignup';
 
 function App() {
     return (
@@ -15,8 +19,16 @@ function App() {
                 <Route path="/parent">
                     <Route index element={<Signupparent />} />
                     <Route path="signup" element={<Signupparent />} />
-                    <Route path="login" element={<Login />} />
+                    <Route path="login" element={<ParentLogin />} />
                     <Route path="dashboard" element={<Dashboard />} />
+                    <Route path="mpin" element={<Mpin />} />
+                </Route> 
+                <Route path="/merchant">
+                    <Route index element={<MerchantSignup />} />
+                    <Route path="signup" element={<MerchantSignup />} />
+                    <Route path="login" element={<MerchantLogin />} />
+                    <Route path="dashboard" element={<Dashboard />} />
+                    <Route path="mpin" element={<Mpin />} />
                 </Route> 
             </Routes>
         </>
