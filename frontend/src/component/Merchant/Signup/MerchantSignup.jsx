@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MerchantCategory from './category';
 import {useNavigate} from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
-import {merchantRegister} from "./../../"
+import {merchantRegister} from "./../../../utilities/axios/Apis"
 
 const MerchantSignup = () => {
 
@@ -53,7 +53,7 @@ const MerchantSignup = () => {
             toast.error("Enter Your Email")
         } else if (!datatmp.email.includes("@")) {
             toast.error("Enter Valid Email")
-        } else if (datatmp.category === "") {
+        } else if (datatmp.category.length === 0) {
             toast.error("Select Category")
         } else if (datatmp.username === "") {
             toast.error("Enter Your Username")
@@ -65,7 +65,7 @@ const MerchantSignup = () => {
             toast.error("Password doesn't match")
         }
         else {
-            const response = await merchantRegister(formData);
+            const response = await merchantRegister(datatmp);
 
             if (response.status === 200) {
                 setFormData({
@@ -79,7 +79,7 @@ const MerchantSignup = () => {
                     password: '',
                     cpassword: '',
                 });
-                navigate("/")
+                navigate("/otp", {state : datatmp})
             } else {
                 toast.error(response.response.data.error);
             }
