@@ -88,7 +88,7 @@ const merchant_signup = async (req, res) => {
         }
 
         try {
-            // otp(data.phone,data.name);
+            otp(data.phone,data.name);
         } catch (error) {
             console.log("This is the error from merchant_signup.js -> otp block")
             console.log(error);

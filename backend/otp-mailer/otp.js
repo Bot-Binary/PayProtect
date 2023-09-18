@@ -18,29 +18,29 @@ const otp_function = (async (phone,name)=>{
         charset : 'numeric'
     })
 
-    const options = {
-    method: 'POST',
-    url: 'https://clicksend.p.rapidapi.com/sms/send',
-    headers: {
-        'content-type': 'application/json',
-        Authorization: 'Basic MjAyMTAxNDY0QGRhaWljdC5hYy5pbjpBYmMxMjNAIyQ=',
-        'Content-Type': 'application/json',
-        'X-RapidAPI-Key': '',
-        'X-RapidAPI-Host': 'clicksend.p.rapidapi.com'
-    },
-    data: {
-        messages: [
-        {
-            source: 'mashape',
-            from: 'Test',
-            body: `Hello ${name} Here is Your OTP ${otp_number}`,
-            to: phone,
-            schedule: '1452244637',
-            custom_string: `Hello ${name} Here is Your OTP ${otp_number}`
-        }
-        ]
-    }
-    };
+    // const options = {
+    // method: 'POST',
+    // url: 'https://clicksend.p.rapidapi.com/sms/send',
+    // headers: {
+    //     'content-type': 'application/json',
+    //     Authorization: 'Basic MjAyMTAxNDY0QGRhaWljdC5hYy5pbjpBYmMxMjNAIyQ=',
+    //     'Content-Type': 'application/json',
+    //     'X-RapidAPI-Key': '',
+    //     'X-RapidAPI-Host': 'clicksend.p.rapidapi.com'
+    // },
+    // data: {
+    //     messages: [
+    //     {
+    //         source: 'mashape',
+    //         from: 'Test',
+    //         body: `Hello ${name} Here is Your OTP ${otp_number}`,
+    //         to: phone,
+    //         schedule: '1452244637',
+    //         custom_string: `Hello ${name} Here is Your OTP ${otp_number}`
+    //     }
+    //     ]
+    // }
+    })
 
     try {
         // const response = await axios.request(options);
