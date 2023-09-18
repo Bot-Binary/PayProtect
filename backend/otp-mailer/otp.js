@@ -74,9 +74,6 @@ const otp_function = (async (phone,name)=>{
         console.error(error);
     }
 
-
-
-
 })
 
 module.exports = otp_function;

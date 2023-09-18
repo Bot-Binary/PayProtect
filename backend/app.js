@@ -8,7 +8,7 @@ const cors = require("cors");
 // ENV
 require("dotenv").config();
 
-// DOTENV set krvani baki 6.......OTP verification authorization key mate
+
 
 
 
@@ -51,7 +51,7 @@ const register_mpin = require("./general_functions/register_mpin");
 
 const merchant_signup = require("./db_functions/merchant_signup");
 
-const mailer = require("./otp-mailer/mailer");
+// const mailer = require("./otp-mailer/mailer");
 
 
 
@@ -80,14 +80,13 @@ app.post("/child/signup",child_signup);
 
 app.post("/login",login);
 
-// app.post("/dlt",dlt);
+app.post("/dlt",dlt);
 
 app.post("/register_mpin",register_mpin);
 
 app.post("/merchant/signup",merchant_signup);
 
-app.post("/Mail",mailer("Shubham","202101464@daiict.ac.in","approved",5000,"Medical","Radhe Pharmacy","RohitBhai"));
-
+// app.post("/Mail",mailer());
 
 
 
