@@ -13,7 +13,7 @@ const merchant = require("../models/registration/merchant");
 const otp_verification = (async (req, res) => {
 
     try {
-        const phone_ = req.body.phone;
+        const phone = req.body.phone;
         // const phone = `+91${phone_}`;
         const otp_number = req.body.otp;
 
@@ -27,12 +27,12 @@ const otp_verification = (async (req, res) => {
         else {
 
             try {
-                const dlt = await parent.deleteOne({ phone: phone_ });
+                const dlt = await parent.deleteOne({ phone: phone });
                 const dlt_count = dlt.deletedCount;
                 if (dlt_count == 0) {
-                    const dlt = await child.deleteOne({ phone: phone_ });
+                    const dlt = await child.deleteOne({ phone: phone });
                     if (dlt.deletedCount == 0) {
-                        const dlt = await merchant.deleteOne({ phone: phone_ });
+                        const dlt = await merchant.deleteOne({ phone: phone });
                     }
                 }
             } catch (error) {
