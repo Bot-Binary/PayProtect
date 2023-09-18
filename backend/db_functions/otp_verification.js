@@ -6,6 +6,7 @@ const bcrypt = require("bcryptjs");
 const otp = require("../models/verification/otp");
 const parent = require("../models/registration/parents");
 const child = require("../models/registration/child");
+const merchant = require("../models/registration/merchant");
 
 
 
@@ -28,6 +29,9 @@ const otp_verification = (async (req, res) => {
             const dlt_count = dlt.deletedCount;
             if (dlt_count == 0) {
                 const dlt = await child.deleteOne({ phone: phone_ });
+                if(dlt.deletedCount==0){
+                    const dlt = await merchant.deleteOne({phone : phone_});
+                }
             }
         } catch (error) {
             console.log("This is error from otp_verification.js -> delete part");
