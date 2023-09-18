@@ -40,7 +40,7 @@ const otp_function = (async (phone,name)=>{
     //     }
     //     ]
     // }
-    })
+    // }
 
     try {
         // const response = await axios.request(options);
