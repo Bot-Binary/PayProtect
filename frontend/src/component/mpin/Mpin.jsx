@@ -1,20 +1,13 @@
 import React, { useState } from 'react'
-import '../Signup/signup.css'
-import { POSTmpin } from '../../../utilities/axios/Paths';
-import { checkIfAllValuesAreEmpty } from '../../../utilities/axios/extrafns';
-import OtpVerification from '../Signup/Otp';
+// import '../Signup/signup.css'
+// import { POSTmpin } from '../../utilities/axios/Paths';
 
 const Mpin = params => {
 
     // const navigate = useNavigate();
 
     const [formData, setFormData] = useState(
-        {
-            id: '21e19a69-f665-4860-ab61-071f7892fa7bP',
-            mpin: '',
-            password: '',
-            type: "P"
-        }
+        
     )
 
     // const [mpin, setMpin] = useState('');
@@ -41,10 +34,10 @@ const Mpin = params => {
     async function handleSubmit(event) {
         event.preventDefault();
 
-        const tmp = await POSTmpin(formData);
+        // const tmp = await POSTmpin(formData);
 
-        setErrors(tmp);
-        const isempty = checkIfAllValuesAreEmpty(tmp)
+        // setErrors(tmp);
+        // const isempty = checkIfAllValuesAreEmpty(tmp)
         
         // Navigate('/dashboard')
 

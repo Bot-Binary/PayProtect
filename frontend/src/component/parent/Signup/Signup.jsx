@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './signup.css'
 import { POSTsignup } from '../../../utilities/axios/Paths';
-import { checkIfAllValuesAreEmpty } from '../../../utilities/axios/extrafns';
+// import { checkIfAllValuesAreEmpty } from '../../../utilities/axios/extrafns';
 
 const Signup = params => {
 
@@ -54,12 +54,12 @@ const Signup = params => {
         const tmp = await POSTsignup(formData);
 
         setErrors(tmp);
-        const isempty = checkIfAllValuesAreEmpty(tmp)
+        // const isempty = checkIfAllValuesAreEmpty(tmp)
 
-        if (isempty === true) {
-            params.setPhone(FormData.phone)
-            params.setOtpSent(true)
-        }
+        // if (isempty === true) {
+        //     params.setPhone(FormData.phone)
+        //     params.setOtpSent(true)
+        // }
     }
 
     return (

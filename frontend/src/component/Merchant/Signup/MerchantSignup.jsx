@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import './signup.css'
-import { MerchantPOSTsignup } from '../../../utilities/axios/Paths';
-import { checkIfAllValuesAreEmpty } from '../../../utilities/axios/extrafns';
+import React, { useState } from 'react';
 import MerchantCategory from './category';
+import {useNavigate} from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import {merchantRegister} from "./../../"
 
-const MerchantSignup = params => {
+const MerchantSignup = () => {
 
-    const [personName, setPersonName] = React.useState([]);
-    
+    const [category, setCategory] = React.useState([]);
 
+    const navigate = useNavigate();
     const [formData, setFormData] = useState(
         {
             fname: '',
@@ -22,25 +22,6 @@ const MerchantSignup = params => {
         }
     )
 
-    // console.log(formData)
-    // console.log(personName)
-
-
-    const [errors, setErrors] = useState(
-        {
-            fname: '',
-            mname: '',
-            lname: '',
-            phone: '',
-            email: '',
-            username: '',
-            password: '',
-            cpassword: '',
-            catggory: ''
-        }
-    )
-
-    // console.log(formData)
 
     function handleChange(event) {
         const { name, value } = event.target
@@ -57,124 +38,151 @@ const MerchantSignup = params => {
 
         const datatmp = {
             ...formData,
-            category : personName
+            category: category
         };
-        // console.log(datatmp)
 
-        const tmp = await MerchantPOSTsignup(datatmp);
+        if (datatmp.fname === "") {
+            toast.error("Enter Your First Name")
+        } else if (datatmp.mname === "") {
+            toast.error("Enter Your Middle Name")
+        } else if (datatmp.lname === "") {
+            toast.error("Enter Your Last Name")
+        } else if (datatmp.phone === "") {
+            toast.error("Enter Your Phone")
+        } else if (datatmp.email === "") {
+            toast.error("Enter Your Email")
+        } else if (!datatmp.email.includes("@")) {
+            toast.error("Enter Valid Email")
+        } else if (datatmp.category === "") {
+            toast.error("Select Category")
+        } else if (datatmp.username === "") {
+            toast.error("Enter Your Username")
+        } else if (datatmp.password === "") {
+            toast.error("Enter Your Password")
+        } else if (datatmp.password.length < 6) {
+            toast.error("password length minimum 6 character")
+        } else if (datatmp.cpassword !== datatmp.password) {
+            toast.error("Password doesn't match")
+        }
+        else {
+            const response = await merchantRegister(formData);
 
-        setErrors(tmp);
-        const isempty = checkIfAllValuesAreEmpty(tmp)
-
-        if (isempty === true) {
-            params.setPhone(FormData.phone)
-            params.setOtpSent(true)
+            if (response.status === 200) {
+                setFormData({
+                    ...formData,
+                    fname: '',
+                    mname: '',
+                    lname: '',
+                    phone: '',
+                    email: '',
+                    username: '',
+                    password: '',
+                    cpassword: '',
+                });
+                navigate("/")
+            } else {
+                toast.error(response.response.data.error);
+            }
         }
     }
 
     return (
-        <div className="signup">
-            <div className="form">
-                <h1>Join Us</h1>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <input
-                            type="text"
-                            value={formData.fname}
-                            name='fname'
-                            onChange={handleChange}
-                            placeholder='First Name'
-                        />
-                        {errors.fname && <p className="errors">{errors.fname}</p>}
-                        {/* <br></br> */}
-                    </div>
-                    <div>
-                        <input
-                            type="text"
-                            value={formData.mname}
-                            onChange={handleChange}
-                            name='mname'
-                            placeholder='Middle Name'
-                        />
-                        {errors.mname && <p className="errors">{errors.mname}</p>}
-                        {/* <br></br> */}
-                    </div>
-                    <div>
-                        <input
-                            type="text"
-                            value={formData.lname}
-                            onChange={handleChange}
-                            name='lname'
-                            placeholder='Last Name'
-                        />
-                        {errors.lname && <p className="errors">{errors.lname}</p>}
-                    </div>
+        <>
+            <div className="signup">
+                <div className="form">
+                    <h1>Join Us</h1>
+                    <form onSubmit={handleSubmit}>
+                        <div>
+                            <input
+                                type="text"
+                                value={formData.fname}
+                                name='fname'
+                                onChange={handleChange}
+                                placeholder='First Name'
+                            />
+                            {/* <br></br> */}
+                        </div>
+                        <div>
+                            <input
+                                type="text"
+                                value={formData.mname}
+                                onChange={handleChange}
+                                name='mname'
+                                placeholder='Middle Name'
+                            />
+                            {/* <br></br> */}
+                        </div>
+                        <div>
+                            <input
+                                type="text"
+                                value={formData.lname}
+                                onChange={handleChange}
+                                name='lname'
+                                placeholder='Last Name'
+                            />
+                        </div>
 
-                    <div>
-                        <input
-                            type='text'
-                            value={formData.phone}
-                            onChange={handleChange}
-                            name='phone'
-                            placeholder='Mobile'
-                        />
-                        {errors.phone && <p className="errors">{errors.phone}</p>}
-                    </div>
+                        <div>
+                            <input
+                                type='text'
+                                value={formData.phone}
+                                onChange={handleChange}
+                                name='phone'
+                                placeholder='Mobile'
+                            />
+                        </div>
 
-                    <div>
-                        <input
-                            type="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            name='email'
-                            placeholder='Email'
-                        />
-                        {errors.email && <p className="errors">{errors.email}</p>}
+                        <div>
+                            <input
+                                type="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                name='email'
+                                placeholder='Email'
+                            />
 
-                    </div>
+                        </div>
 
-                    <div>
-                        <MerchantCategory personName={personName} setPersonName={setPersonName}/>
-                        {errors.category && <p className="errors">{errors.category}</p>}
-                    </div>
+                        <div>
+                            <MerchantCategory personName={category} setPersonName={setCategory} />
+                        </div>
 
-                    <div>
-                        <input 
-                            type="text"
-                            value={formData.username}
-                            onChange={handleChange}
-                            name='username'
-                            placeholder='Select Username'
-                        />
-                        {errors.username && <p className="errors">{errors.username}</p>}
-                    </div>
+                        <div>
+                            <input
+                                type="text"
+                                value={formData.username}
+                                onChange={handleChange}
+                                name='username'
+                                placeholder='Select Username'
+                            />
+                        </div>
 
-                    <div>
-                        <input
-                            type="password"
-                            value={formData.password}
-                            name='password'
-                            onChange={handleChange}
-                            placeholder='Password'
-                        />
-                        {errors.password && <p className="errors">{errors.password}</p>}
-                    </div>
+                        <div>
+                            <input
+                                type="password"
+                                value={formData.password}
+                                name='password'
+                                onChange={handleChange}
+                                placeholder='Password'
+                            />
+                        </div>
 
-                    <div>
-                        <input
-                            type="password"
-                            value={formData.cpassword}
-                            name='cpassword'
-                            onChange={handleChange}
-                            placeholder='Confirm Password'
-                        />
-                        {errors.cpassword && <p className="errors">{errors.cpassword}</p>}
-                    </div>
+                        <div>
+                            <input
+                                type="password"
+                                value={formData.cpassword}
+                                name='cpassword'
+                                onChange={handleChange}
+                                placeholder='Confirm Password'
+                            />
+                        </div>
 
-                    <button type="submit">Submit</button>
-                </form>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
             </div>
-        </div>
+            <ToastContainer />
+        </>
     )
 }
 

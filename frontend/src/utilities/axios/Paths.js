@@ -1,5 +1,5 @@
 import axios from 'axios';
-import ValidateData from '../validator/validate';
+// import ValidateData from '../validator/validate';
 // import {object_encrypter} from "object-encrypter";
 import { Navigate, useNavigate } from "react-router-dom";
 
@@ -12,7 +12,8 @@ async function POSTsignup(data) {
 
     // console.log(data);
 
-    const errors = ValidateData(data);
+    // const errors = ValidateData(data);
+    const errors = {}
     console.log(errors)
 
     var hasSomething = false;
@@ -223,7 +224,8 @@ async function MerchantPOSTsignup(data) {
 
     console.log(data);
 
-    let errors = ValidateData(data);
+    // let errors = ValidateData(data);
+    let errors = {};
     if(data.category.length === 0){
         errors = {
             ...errors,
