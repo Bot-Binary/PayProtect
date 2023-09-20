@@ -20,7 +20,8 @@ const mpin = (async (req,res)=>{
     const encrypted = req.body.str;
     const id = req.query.id;
     
-    const data = await engine.decrypt(encrypted);
+    // const data = await engine.decrypt(encrypted);
+    const data = req.body;
     
     const mpin = data.mpin;
     const password = data.password;
