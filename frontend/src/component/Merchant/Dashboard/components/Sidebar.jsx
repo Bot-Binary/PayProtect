@@ -3,16 +3,15 @@ import "./Sidebar.css";
 import Logo from "../imgs/logo.png";
 import {
     UilEstate,
-    UilUsersAlt,
     UilHistory,
     UilLock,
-    UilSetting
+    UilSetting,
+    UilSignOutAlt
   } from "@iconscout/react-unicons";
-import { UilSignOutAlt } from "@iconscout/react-unicons";
-import { SidebarData } from "../Data/Data";
 import { UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Mpinmodal from "./Modal/Mpinmodal"
 
 const Sidebar = () => {
     const [selected, setSelected] = useState("Dashboard");
@@ -66,7 +65,8 @@ const Sidebar = () => {
 
                             <div className={selected === "Mpin" ? "menuItem active" : "menuItem"}>
                                 <UilLock/>
-                                <Link to="/" ><span>M-Pin</span></Link>
+                                {/* <Link to="/" ><span>M-Pin</span></Link> */}
+                                <Mpinmodal/>
                             </div>
 
 

@@ -14,9 +14,6 @@ const MerchantLogin = params => {
         }
     )
 
-    const [otpSent, setOtpSent] = useState(false);
-    const [phone, setPhone] = useState('');
-
     const [errors, setErrors] = useState(
         {
             phone: '',
@@ -37,7 +34,7 @@ const MerchantLogin = params => {
     }
 
     async function handleSubmit(event) {
-        event.preventDefault();
+        // event.preventDefault();
 
         // const tmp = await MerchantPOSTlogin(formData);
 
