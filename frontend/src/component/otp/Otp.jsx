@@ -10,7 +10,7 @@ const OtpVerification = (phone) => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    // console.log(location.state)
+    console.log(location.state)
 
     const handleChange = (e) => {
         setOtp(e.target.value);
@@ -38,13 +38,12 @@ const OtpVerification = (phone) => {
             // console.log(data)
 
             const response = await sentOtpFunction(data);
+            console.log(response)
             // console.log(response)
             if (response.status === 200) {
-                localStorage.setItem("userdbtoken", response.data.userToken);
-                toast.success("Registered succesfully");
-                setTimeout(() => {
-                    navigate("/merchant/dashboard", {state : {response}})
-                }, 2000)
+                    console.log("hegjksd")
+                    navigate("/merchant/dashboard", {state : location.state})
+                // }, 2000)
             } else {
                 toast.error("response.response.data.error")
             }
