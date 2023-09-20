@@ -1,28 +1,13 @@
 import React, { useState } from 'react'
-import '../Signup/signup.css'
-import { POSTmpin } from '../../../utilities/axios/Paths';
-import { checkIfAllValuesAreEmpty } from '../../../utilities/axios/extrafns';
-import OtpVerification from '../Signup/Otp';
 
-const Mpin = params => {
+const Mpin = () => {
 
     // const navigate = useNavigate();
 
     const [formData, setFormData] = useState(
         {
-            id: '21e19a69-f665-4860-ab61-071f7892fa7bP',
-            mpin: '',
-            password: '',
-            type: "P"
-        }
-    )
-
-    // const [mpin, setMpin] = useState('');
-
-    const [errors, setErrors] = useState(
-        {
-            mpin: '',
-            password: ''
+            mpin: "",
+            password: ""
         }
     )
 
@@ -41,10 +26,10 @@ const Mpin = params => {
     async function handleSubmit(event) {
         event.preventDefault();
 
-        const tmp = await POSTmpin(formData);
+        // const tmp = await POSTmpin(formData);
 
-        setErrors(tmp);
-        const isempty = checkIfAllValuesAreEmpty(tmp)
+        // setErrors(tmp);
+        // const isempty = checkIfAllValuesAreEmpty(tmp)
         
         // Navigate('/dashboard')
 
@@ -56,7 +41,7 @@ const Mpin = params => {
             {/* {!otpSent ? ( */}
                 < div className="signup" >
                     <div className="form">
-                        <h1>Login</h1>
+                        <h1>M-PIN</h1>
                         <form onSubmit={handleSubmit}>
                             <div>
                                 <input
@@ -66,7 +51,6 @@ const Mpin = params => {
                                     onChange={handleChange}
                                     placeholder='M-Pin'
                                 />
-                                {errors.mpin && <p className="errors">{errors.mpin}</p>}
                             </div>
                             <div>
                                 <input
@@ -76,7 +60,6 @@ const Mpin = params => {
                                     onChange={handleChange}
                                     placeholder='Password'
                                 />
-                                {errors.password && <p className="errors">{errors.password}</p>}
                             </div>
                             <button type="submit">Submit</button>
                         </form>

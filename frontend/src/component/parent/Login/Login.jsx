@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import '../Signup/signup.css'
 import { POSTlogin } from '../../../utilities/axios/Paths';
-import { checkIfAllValuesAreEmpty } from '../../../utilities/axios/extrafns';
-import OtpVerification from '../Signup/Otp';
+// import { checkIfAllValuesAreEmpty } from '../../../utilities/axios/extrafns';
+import OtpVerification from '../../otp/Otp';
 
 const ParentLogin = params => {
 
@@ -44,13 +44,13 @@ const ParentLogin = params => {
         const tmp = await POSTlogin(formData);
 
         setErrors(tmp);
-        const isempty = checkIfAllValuesAreEmpty(tmp)
+        // const isempty = checkIfAllValuesAreEmpty(tmp)
 
-        if (isempty === true) {
-            setPhone(FormData.phone)
-            setOtpSent(true)
-            console.log("here\n")
-        }
+        // if (isempty === true) {
+        //     setPhone(FormData.phone)
+        //     setOtpSent(true)
+        //     console.log("here\n")
+        // }
         
         // Navigate('/dashboard')
 

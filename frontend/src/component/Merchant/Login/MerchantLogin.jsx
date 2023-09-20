@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import '../Signup/signup.css'
-import { MerchantPOSTlogin } from '../../../utilities/axios/Paths';
-import { checkIfAllValuesAreEmpty } from '../../../utilities/axios/extrafns';
+// import { checkIfAllValuesAreEmpty } from '../../../utilities/axios/extrafns';
 // import OtpVerification from '../Signup/Otp';
 
 const MerchantLogin = params => {
@@ -41,16 +39,16 @@ const MerchantLogin = params => {
     async function handleSubmit(event) {
         event.preventDefault();
 
-        const tmp = await MerchantPOSTlogin(formData);
+        // const tmp = await MerchantPOSTlogin(formData);
 
-        setErrors(tmp);
-        const isempty = checkIfAllValuesAreEmpty(tmp)
+        // setErrors(tmp);
+        // const isempty = checkIfAllValuesAreEmpty(tmp)
 
-        if (isempty === true) {
-            setPhone(FormData.phone)
-            setOtpSent(true)
-            console.log("here\n")
-        }
+        // if (isempty === true) {
+        //     setPhone(FormData.phone)
+        //     setOtpSent(true)
+        //     console.log("here\n")
+        // }
         
         // Navigate('/dashboard')
 

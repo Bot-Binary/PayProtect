@@ -1,7 +1,7 @@
 // src/App.js
 import React, { useState } from 'react';
 import Signup from './Signup';
-import OtpVerification from './Otp';
+import OtpVerification from '../../otp/Otp';
 
 const Signupparent = () => {
 
