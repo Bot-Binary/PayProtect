@@ -1,21 +1,13 @@
 import React, { useState } from 'react'
-// import '../Signup/signup.css'
-// import { POSTmpin } from '../../utilities/axios/Paths';
 
-const Mpin = params => {
+const Mpin = () => {
 
     // const navigate = useNavigate();
 
     const [formData, setFormData] = useState(
-        
-    )
-
-    // const [mpin, setMpin] = useState('');
-
-    const [errors, setErrors] = useState(
         {
-            mpin: '',
-            password: ''
+            mpin: "",
+            password: ""
         }
     )
 
@@ -49,7 +41,7 @@ const Mpin = params => {
             {/* {!otpSent ? ( */}
                 < div className="signup" >
                     <div className="form">
-                        <h1>Login</h1>
+                        <h1>M-PIN</h1>
                         <form onSubmit={handleSubmit}>
                             <div>
                                 <input
@@ -59,7 +51,6 @@ const Mpin = params => {
                                     onChange={handleChange}
                                     placeholder='M-Pin'
                                 />
-                                {errors.mpin && <p className="errors">{errors.mpin}</p>}
                             </div>
                             <div>
                                 <input
@@ -69,7 +60,6 @@ const Mpin = params => {
                                     onChange={handleChange}
                                     placeholder='Password'
                                 />
-                                {errors.password && <p className="errors">{errors.password}</p>}
                             </div>
                             <button type="submit">Submit</button>
                         </form>

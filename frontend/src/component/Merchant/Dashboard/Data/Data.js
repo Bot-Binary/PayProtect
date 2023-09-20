@@ -1,15 +1,19 @@
 // Sidebar imports
 import {
   UilEstate,
+  UilClipboardAlt,
   UilUsersAlt,
   UilHistory,
+  UilPackage,
+  UilChart,
+  UilSignOutAlt,
   UilLock,
   UilSetting
 } from "@iconscout/react-unicons";
 
 // Analytics Cards imports
 import { UilUsdSquare, UilMoneyWithdrawal } from "@iconscout/react-unicons";
-// import { keyboard } from "@testing-library/user-event/dist/keyboard";
+import { keyboard } from "@testing-library/user-event/dist/keyboard";
 
 // Recent Card Imports
 import img1 from "../imgs/img1.png";
@@ -21,22 +25,22 @@ export const SidebarData = [
   {
     icon: UilEstate,
     heading: "Dashboard",
-  },
-  {
-    icon: UilUsersAlt,
-    heading: "Children",
+    link : "dashboard"
   },
   {
     icon: UilHistory,
     heading: "History",
+    link : ""
   },
   {
     icon: UilSetting,
-    heading: 'Settings'
+    heading: 'Settings',
+    link: ""
   },
   {
     icon: UilLock,
-    heading: 'M-Pin'
+    heading: 'M-Pin',
+    link: "http://127.0.0.1:3000/mpin"
   },
 ];
 

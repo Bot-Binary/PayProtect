@@ -5,6 +5,7 @@ import ParentLogin from './component/parent/Login/Login';
 import OtpVerification from './component/otp/Otp';
 import Dashboard from './component/parent/Dashboard/Dashboard';
 import Mpin from './component/mpin/Mpin'
+import MerchantDashboard from './component/Merchant/Dashboard/Dashboard'
 import MerchantLogin from './component/Merchant/Login/MerchantLogin';
 import MerchantSignup from './component/Merchant/Signup/MerchantSignup'
 import { Routes, Route } from 'react-router-dom';
@@ -27,7 +28,7 @@ function App() {
                     <Route index element={<MerchantSignup />} />
                     <Route path="signup" element={<MerchantSignup />} />
                     <Route path="login" element={<MerchantLogin />} />
-                    <Route path="dashboard" element={<Dashboard />} />
+                    <Route path="dashboard" element={<MerchantDashboard />} />
                 </Route>
             </Routes>
         </>
