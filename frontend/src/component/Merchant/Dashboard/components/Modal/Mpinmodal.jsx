@@ -7,11 +7,14 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
+import {useLocation} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 
 
 export default function Mpinmodal({ modalOpen, setModalOpen }) {
 
+    const local = useLocation();
+    console.log(local);
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -22,12 +25,25 @@ export default function Mpinmodal({ modalOpen, setModalOpen }) {
         setOpen(false);
     };
 
+    // const usertype = local.path[1] === 'm' ? 'M' : (local.path[1] === 'p' ? 'P' : 'C')
     const [formData, setFormData] = useState(
         {
             mpin: '',
             password: '',
+            type : local.state.usertype,
+            id : ""
         }
     )
+
+    function handleChange(event) {
+        const { name, value } = event.target
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [name]: value
+            }
+        })
+    }
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -36,8 +52,14 @@ export default function Mpinmodal({ modalOpen, setModalOpen }) {
             ...formData,
         }
 
-        if (datatmp.fname === "") {
-            toast.error("Enter Your First Name")
+        if (datatmp.mpin === "") {
+            toast.error("Enter Your mpin")
+        } else if (datatmp.mpin.length < 6) {
+            toast.error("M-Pin length must be 6")
+        } else if (datatmp.password === "") {
+            toast.error("Enter Passwiord")
+        }else if (datatmp.password.length < 6) {
+            toast.error("Password length must be at least 6")
         }
         else {
             // const response = await merchantRegister(datatmp);
@@ -77,6 +99,7 @@ export default function Mpinmodal({ modalOpen, setModalOpen }) {
                             autoFocus
                             margin="dense"
                             value={formData.mpin}
+                            onChange={handleChange}
                             name='mpin'
                             id="name"
                             label="M-pin"
@@ -90,6 +113,7 @@ export default function Mpinmodal({ modalOpen, setModalOpen }) {
                             margin="dense"
                             id="name"
                             value={formData.password}
+                            onChange={handleChange}
                             name='password'
                             label="Password"
                             type="password"
@@ -106,7 +130,7 @@ export default function Mpinmodal({ modalOpen, setModalOpen }) {
                     </DialogActions>
                 </Dialog>
             </div>
-            {ToastContainer}
+            <ToastContainer />
         </>
     );
 }
