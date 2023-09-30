@@ -9,6 +9,16 @@ const OtpVerification = (phone) => {
     const [otp, setOtp] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
+    
+    let usertype;
+    if(location.pathname[1] === "p"){
+        usertype = "P"
+    } else if(location.pathname[1] === "c"){
+        usertype = "C"
+    } else{
+        usertype = "M"
+    }
+
 
     console.log(location.state)
 
@@ -37,12 +47,13 @@ const OtpVerification = (phone) => {
 
             // console.log(data)
 
+
             const response = await sentOtpFunction(data);
             console.log(response)
             // console.log(response)
             if (response.status === 200) {
                     console.log("hegjksd")
-                    navigate("/merchant/dashboard", {state : location.state})
+                    navigate("/merchant/dashboard", {state : {response, usertype : usertype}})
                 // }, 2000)
             } else {
                 toast.error("response.response.data.error")

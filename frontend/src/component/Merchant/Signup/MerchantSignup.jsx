@@ -177,7 +177,7 @@ const MerchantSignup = () => {
                             />
                         </div>
 
-                        <button type="submit">Submit</button>
+                        <button type="submit" onSubmit={handleSubmit}>Submit</button>
                     </form>
                 </div>
             </div>
