@@ -22,7 +22,7 @@ const otp_verification = (async (req, res) => {
 
         const match = await bcrypt.compare(otp_number, hashed_otp);
         if (match) {
-            res.status(200).send();
+            res.status(200).send("Verified");
         }
         else {
 
@@ -39,9 +39,7 @@ const otp_verification = (async (req, res) => {
                 console.log("This is error from otp_verification.js -> delete part");
                 console.log(error);
             }
-
-
-            res.status(288).send();
+            res.status(288).send("Not-Valid");
         }
     }
     catch(e){
