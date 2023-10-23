@@ -1,23 +1,17 @@
 import React, { useState } from 'react'
-// import { checkIfAllValuesAreEmpty } from '../../../utilities/axios/extrafns';
-// import OtpVerification from '../Signup/Otp';
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import { merchantLogin } from '../../../utilities/axios/Apis';
 
-const MerchantLogin = params => {
+const MerchantLogin = () => {
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState(
         {
             phone: '',
             password: '',
-            type: "M"
-        }
-    )
-
-    const [errors, setErrors] = useState(
-        {
-            phone: '',
-            password: ''
+            // type: "M"
         }
     )
 
@@ -34,58 +28,68 @@ const MerchantLogin = params => {
     }
 
     async function handleSubmit(event) {
-        // event.preventDefault();
+        event.preventDefault();
 
-        // const tmp = await MerchantPOSTlogin(formData);
+        if (formData.phone === "") {
+            toast.error("Enter phone number")
+        } else if (formData.password === "") {
+            toast.error("Enter password")
+        } else if (formData.password.length < 6) {
+            toast.error("password length minimum 6 character")
+        }
+        else {
+            const response = await merchantLogin(formData);
+            console.log(response)
 
-        // setErrors(tmp);
-        // const isempty = checkIfAllValuesAreEmpty(tmp)
+            if (response.status === 200) {
+                setFormData({
+                    ...formData,
+                    phone: '',
+                    password: '',
+                    // type: ""
+                })
 
-        // if (isempty === true) {
-        //     setPhone(FormData.phone)
-        //     setOtpSent(true)
-        //     console.log("here\n")
-        // }
-        
-        // Navigate('/dashboard')
-
-        
+                toast.success("Login Successfull.")
+                navigate("/merchant/dashboard", { state: { usertype: 'M' } })
+            }
+            else {
+                toast.error(response.response.data.error);
+            }
+        }
     }
 
     return (
-        <div>
-            {/* {!otpSent ? ( */}
-                < div className="signup" >
-                    <div className="form">
-                        <h1>Login</h1>
-                        <form onSubmit={handleSubmit}>
-                            <div>
-                                <input
-                                    type="tel"
-                                    value={formData.phone}
-                                    name='phone'
-                                    onChange={handleChange}
-                                    placeholder='Phone No.'
-                                />
-                                {errors.phone && <p className="errors">{errors.phone}</p>}
-                            </div>
-                            <div>
-                                <input
-                                    type="password"
-                                    value={formData.password}
-                                    name='password'
-                                    onChange={handleChange}
-                                    placeholder='Password'
-                                />
-                                {errors.password && <p className="errors">{errors.password}</p>}
-                            </div>
-                            <button type="submit">Submit</button>
-                        </form>
-                    </div>
-                </div >
-            {/* ) : <OtpVerification  */}
-            {/* } */}
-        </div>
+        <>
+            <div className="signup">
+                <div className="form">
+                    <h1>Join Us</h1>
+                    <form>
+                        <div>
+                            <input
+                                type='text'
+                                value={formData.phone}
+                                onChange={handleChange}
+                                name='phone'
+                                placeholder='Mobile'
+                            />
+                        </div>
+
+                        <div>
+                            <input
+                                type="password"
+                                value={formData.password}
+                                name='password'
+                                onChange={handleChange}
+                                placeholder='Password'
+                            />
+                        </div>
+
+                        <button style={{ cursor: "pointer" }} onClick={handleSubmit}>Submit</button>
+                    </form>
+                </div>
+            </div>
+            <ToastContainer />
+        </>
     )
 }
 

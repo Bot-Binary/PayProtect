@@ -8,9 +8,9 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import QrCodePlugin from './QrCodePlugin';
 
-export default function PayNow({modalOpen, setModalOpen}) {
+export default function PayNow() {
 
-    console.log("paynow");
+    // console.log("paynow");
     const [open , setOpen] = React.useState(false)
 
     const handleClickOpen = (e) => {
@@ -43,7 +43,7 @@ export default function PayNow({modalOpen, setModalOpen}) {
                 <DialogTitle>Pay Now</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        To Pay, Enter PayI'd or Upload QR code of Merchant
+                        To Pay, Enter PayI'd of Merchant
                     </DialogContentText>
                     <TextField
                         autoFocus
@@ -55,20 +55,17 @@ export default function PayNow({modalOpen, setModalOpen}) {
                         variant="standard"
                     />
 
-                    <DialogContentText>
+                    {/* <DialogContentText>
                         Or
                     </DialogContentText>
+                    */}
 
-                    {
-                        console.log("Hereeee")
-                    }
-
-                    <QrCodePlugin
+                    {/* <QrCodePlugin
                         fps={10}
                         qrbox={250}
                         disableFlip={false}
                         qrCodeSuccessCallback={onNewScanResult}
-                    />
+                    /> */}
 
                 </DialogContent>
                 <DialogActions>

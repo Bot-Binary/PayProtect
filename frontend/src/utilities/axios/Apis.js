@@ -3,8 +3,13 @@ import {BACKEND_URL} from "./helper";
 
 
 export const merchantRegister = async(data)=>{
-    // console.log("herer")
-    return await commonrequest("POST",`${BACKEND_URL}/merchant/signup`,data)
+    console.log(data)
+    return await commonrequest("POST",`${BACKEND_URL}/merchant/signup`, data)
+}
+
+export const merchantLogin = async(data)=>{
+    console.log(data)
+    return await commonrequest("POST",`${BACKEND_URL}/login`, data)
 }
 
 export const sentOtpFunction = async(data)=>{

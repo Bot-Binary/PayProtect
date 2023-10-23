@@ -22,7 +22,6 @@ const MerchantSignup = () => {
         }
     )
 
-
     function handleChange(event) {
         const { name, value } = event.target
         setFormData(prevFormData => {
@@ -66,7 +65,7 @@ const MerchantSignup = () => {
         }
         else {
             const response = await merchantRegister(datatmp);
-
+            // console.log(response)
             if (response.status === 200) {
                 setFormData({
                     ...formData,
@@ -79,7 +78,8 @@ const MerchantSignup = () => {
                     password: '',
                     cpassword: '',
                 });
-                navigate("/otp", {state : datatmp})
+                toast.success("sign up successfull")
+                navigate("/otp", {state : {...datatmp, password: ""}})
             } else {
                 toast.error(response.response.data.error);
             }
@@ -91,7 +91,7 @@ const MerchantSignup = () => {
             <div className="signup">
                 <div className="form">
                     <h1>Join Us</h1>
-                    <form onSubmit={handleSubmit}>
+                    <form>
                         <div>
                             <input
                                 type="text"
@@ -177,7 +177,7 @@ const MerchantSignup = () => {
                             />
                         </div>
 
-                        <button type="submit" onSubmit={handleSubmit}>Submit</button>
+                        <button style={{cursor : "pointer"}} onClick={handleSubmit}>Submit</button>
                     </form>
                 </div>
             </div>

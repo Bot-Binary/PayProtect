@@ -4,34 +4,25 @@ import PayNow from "../Modal/PayNow";
 import AddMoney from "../Modal/AddMoney";
 
 const RightSide = () => {
-    console.log("rightside")
-    const [modalOpen, setModalOpen] = React.useState(true);
-    const handleClickModalOpen = (e) => {
-        // setIsQrOpened(true);
-        setModalOpen(true);
-    };
+    // const [modalOpen, setModalOpen] = React.useState(true);
+    // const handleClickModalOpen = (e) => {
+    //     // setIsQrOpened(true);
+    //     setModalOpen(true);
+    // };
 
     return (
         <div className="RightSide">
             <div>
                 <h3>Options</h3>
-                {
-                    modalOpen ?
-                        (
-                            <>
-                                <PayNow open={modalOpen} setOpen={setModalOpen} />
-                            </>
-                        )
-                        : <span>Error in scanning.</span>}
-                <br />
+                <PayNow/>
                 <AddMoney />
                 {/* <Updates /> */}
 
             </div>
-            <div>
+            {/* <div>
                 {/* <h3>Customer Review</h3> */}
-                {/* <CustomerReview /> */}
-            </div>
+                {/* <CustomerReview /> 
+            </div> */}
         </div>
     );
 };

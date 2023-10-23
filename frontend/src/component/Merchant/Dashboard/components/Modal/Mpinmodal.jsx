@@ -11,10 +11,10 @@ import {useLocation} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 
 
-export default function Mpinmodal({ modalOpen, setModalOpen }) {
+export default function Mpinmodal() {
 
     const local = useLocation();
-    console.log(local);
+    // console.log(local);
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -86,7 +86,7 @@ export default function Mpinmodal({ modalOpen, setModalOpen }) {
     return (
         <>
             <div>
-                <button className="modalbutton" variant="contained" onClick={handleClickOpen}>
+                <button style={{width : "65px"}} className="modalbutton" onClick={handleClickOpen}>
                     M-Pin
                 </button>
                 <Dialog open={open} onClose={handleClose}>
@@ -111,7 +111,7 @@ export default function Mpinmodal({ modalOpen, setModalOpen }) {
                         <TextField
                             autoFocus
                             margin="dense"
-                            id="name"
+                            id="password"
                             value={formData.password}
                             onChange={handleChange}
                             name='password'

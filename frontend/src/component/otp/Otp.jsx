@@ -5,33 +5,33 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useLocation, useNavigate } from "react-router-dom";
 import { sentOtpFunction } from '../../utilities/axios/Apis';
 
-const OtpVerification = (phone) => {
+const OtpVerification = () => {
     const [otp, setOtp] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
-    
+
     let usertype;
-    if(location.pathname[1] === "p"){
+    if (location.pathname[1] === "p") {
         usertype = "P"
-    } else if(location.pathname[1] === "c"){
+    } else if (location.pathname[1] === "c") {
         usertype = "C"
-    } else{
+    } else {
         usertype = "M"
     }
 
 
-    console.log(location.state)
+    // console.log(location.state)
 
     const handleChange = (e) => {
         setOtp(e.target.value);
     };
 
-    console.log(otp);
+    // console.log(otp);
 
     const handleVerify = async (e) => {
 
         e.preventDefault()
-        
+
 
         if (otp === "") {
             toast.error("Enter Your Otp")
@@ -41,8 +41,8 @@ const OtpVerification = (phone) => {
             toast.error("Otp Length minimum 6 digit")
         } else {
             const data = {
-                otp : otp, 
-                phone : location.state.phone
+                otp: otp,
+                phone: location.state.phone
             }
 
             // console.log(data)
@@ -50,18 +50,15 @@ const OtpVerification = (phone) => {
 
             const response = await sentOtpFunction(data);
             console.log(response)
-            // console.log(response)
+
             if (response.status === 200) {
-                    console.log("hegjksd")
-                    navigate("/merchant/dashboard", {state : {response, usertype : usertype}})
-                // }, 2000)
+                toast.success("otp verified")
+                navigate("/merchant/dashboard", { state: { usertype: usertype } })
             } else {
                 toast.error("response.response.data.error")
             }
         }
     };
-
-
 
     return (
         <>

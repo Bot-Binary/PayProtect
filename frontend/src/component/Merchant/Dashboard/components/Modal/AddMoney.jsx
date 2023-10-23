@@ -42,7 +42,7 @@ export default function AddMoney() {
                     <TextField
                         autoFocus
                         margin="dense"
-                        id="name"
+                        id="password"
                         label="Enter M-PIN"
                         type="password"
                         fullWidth

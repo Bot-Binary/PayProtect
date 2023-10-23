@@ -64,8 +64,7 @@ const Sidebar = () => {
                             </div>
 
                             <div className={selected === "Mpin" ? "menuItem active" : "menuItem"}>
-                                <UilLock/>
-                                {/* <Link to="/" ><span>M-Pin</span></Link> */}
+                                <UilLock />
                                 <Mpinmodal/>
                             </div>
 

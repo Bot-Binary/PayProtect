@@ -7,8 +7,8 @@ import { useLocation } from 'react-router-dom';
 
 const MerchantDashboard = () => {
 
-    const location = useLocation();
-    console.log(location.state)
+    // const location = useLocation();
+    // console.log(location.state)
 
     return (
         <div className="App">
