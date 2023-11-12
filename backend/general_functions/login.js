@@ -23,6 +23,9 @@ const login = (async (req,res)=>{
         const real_password = obj.password;
         const password_match = await bcrypt.compare(password,real_password);
         
+        // ///////////////////////////////////////////////////////////////////////////////
+        //  ERROR CHECK it thouraly
+
         const pipe=[{
             $project :{
                 _id:0,
@@ -31,6 +34,8 @@ const login = (async (req,res)=>{
         }]
 
         const aggrigated_obj = await parent.aggregate(pipe);
+        / ///////////////////////////////////////////////////////////////////////////////
+        //  ERROR CHECK it thouraly
 
         if(password_match == true){
             res.status(200).send(aggrigated_obj);
@@ -47,6 +52,9 @@ const login = (async (req,res)=>{
         const real_password = obj.password;
         const password_match = await bcrypt.compare(password,real_password);
 
+        / ///////////////////////////////////////////////////////////////////////////////
+        //  ERROR CHECK it thouraly
+
         const pipe=[{
             $project :{
                 _id:0,
@@ -55,6 +63,9 @@ const login = (async (req,res)=>{
         }]
 
         const aggrigated_obj = await parent.aggregate(pipe);
+
+        / ///////////////////////////////////////////////////////////////////////////////
+        //  ERROR CHECK it thouraly
 
 
         if(password_match == true){
@@ -72,6 +83,10 @@ const login = (async (req,res)=>{
         const real_password = obj.password;
         const password_match = await bcrypt.compare(password,real_password);
 
+
+        // / ///////////////////////////////////////////////////////////////////////////////
+        //  ERROR CHECK it thouraly
+
         const pipe=[{
             $project :{
                 _id:0,
@@ -80,6 +95,9 @@ const login = (async (req,res)=>{
         }]
 
         const aggrigated_obj = await merchant.aggregate(pipe);
+
+        / ///////////////////////////////////////////////////////////////////////////////
+        //  ERROR CHECK it thouraly
 
 
         if(password_match == true){
